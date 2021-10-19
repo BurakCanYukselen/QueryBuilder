@@ -136,7 +136,7 @@ namespace Test
                 .Join<ExampleJoinTableEntity, ExampleTableEntity>(JoinTypes.Left, "Table2", "childTable2", "childTable1", (j, s) => j.Id == s.Id)
                 .Join<ExampleTableEntity, ExampleTableEntity>(JoinTypes.Inner, "Table1", "parentTable1", "childTable1", (j, s) => j.Id == s.ParentId)
                 .Join<ExampleJoinTableEntity, ExampleTableEntity>(JoinTypes.Inner, "Table2", "parentTable2", "childTable2", (j, s) => j.Id == s.ParentId)
-                .Where<(ExampleTableEntity, ExampleJoinTableEntity)>(("childTable1","parentTable2"),p => p.Item1.Amount > 5 && p.Item2.Name == "Test")
+                .Where<(ExampleTableEntity, ExampleJoinTableEntity)>(("childTable1", "parentTable2"), p => p.Item1.Amount > 5 && p.Item2.Name == "Test")
                 .Build();
 
             _outputHelper.WriteLine(query);
